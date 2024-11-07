@@ -1,0 +1,44 @@
+services:
+  db:
+    image: postgres:13
+    container_name: demo-postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=neo
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: demo-pgadmin
+    depends_on:
+      - db
+    ports:
+      - "5051:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin4@pgadmin.org
+      - PGADMIN_DEFAULT_PASSWORD=root
+    restart: always
+
+  web:
+    build: .
+    container_name: demo-web
+    command: sh -c "python manage.py wait_for_db && python manage.py migrate && python manage.py run_etl && python manage.py refresh_materialized_view && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/neo
+      - DJANGO_SETTINGS_MODULE=NeoTechQuiz.settings
+    restart: always
+
+volumes:
+  postgres_data:

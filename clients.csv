@@ -1,0 +1,10 @@
+client_id,name,email,date_of_birth,country,account_balance
+123e4567-e89b-12d3-a456-426614174000,John Doe,johndoe@example.com,1985-06-15,USA,15000.50
+456e7890-e12f-23a4-b789-526715184123,Jane Smith,janesmith@example.com,1990-09-21,UK,2500.00
+879e7892-e15f-23a5-b799-526715184124,Test User,test.me@example.com,1998-07-14,ESP,5500.00
+879e7899-e19f-23a9-b780-526715184130,Test2 User2,test@example.com,2000-07-19,FIN,10500.00
+879e7898-e19f-23a7-b787-526715184131,Test34 User34,test34@example.com,1999-07-19,ITL,20500.00
+879e7892-e19f-23a6-b788-526715184132,Test56 User56,test56@example.com,2001-07-19,GER,5000500.00
+879e7891-e19f-23a2-b781-526715184133,Test78 User78,test78@example.com,2005-07-20,NOR,8000500.00
+879e7896-e19f-23a1-b782-526715184134,Test90 User90,test90@example.com,2002-07-30,leb,10.00
+879e7897-e20f-23a1-b783-526715184135,test000 test,test000@example.com,2002-07-21,can,10.00
